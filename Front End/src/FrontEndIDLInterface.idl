@@ -1,0 +1,23 @@
+module FrontEndIDLInterface{
+
+struct customerInfo {
+		sequence<string> customerInfo;
+	};
+	struct cal {
+	long day;
+	long month;
+	long year;	
+	} ;
+
+interface frontEndIdlInterface{
+    typedef cal c;
+    typedef customerInfo custInfo;
+
+	string openAccount( in string bank, in string firstname, in string lastname, in string emailaddress, in string phonenumber, in string password);
+	boolean getLoan(in string bank, in string accountnumber, in string password, in long loanAmount);
+	boolean transferLoan( in string loanID, in string currentBank, in string otherBank);
+    boolean delayPayment( in string bank, in string loanID, in c currentDueDate, in c newDueDate);
+	custInfo printCustomerInfo(in string bank);
+};
+
+};
